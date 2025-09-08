@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('general_alert')->nullable(); //رسالة عامه
             $table->tinyInteger('active')->default(1);
-            $table->integer('created_by')->nullable();
+            $table->integer('created_by');
             $table->integer('updated_by')->nullable();
             $table->integer('com_code')->nullable();
             $table->timestamps();

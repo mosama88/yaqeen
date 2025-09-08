@@ -22,6 +22,7 @@ class Admin extends Authenticatable
         'username',
         'mobile',
         'password',
+        'com_code',
     ];
 
     /**

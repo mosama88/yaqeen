@@ -28,6 +28,12 @@ class DatabaseSeeder extends Seeder
             'username' => 'mosama',
             'password' => 'password',
             'mobile' => '01228759920',
+            'com_code' => '1',
+        ]);
+
+
+        $this->call([
+            AdminPanelSettingSeeder::class,
         ]);
     }
 }
