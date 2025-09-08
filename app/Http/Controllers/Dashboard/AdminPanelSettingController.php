@@ -25,24 +25,28 @@ class AdminPanelSettingController extends Controller
 
     public function update(AdminPanelSettingRequest $request, AdminPanelSetting $adminPanelSetting)
     {
-        $userAuth = Auth::user()->id;
-        $com_code = Auth::user()->com_code;
-        $validateData = $request->validated();
-        $dataUpdate = array_merge($validateData, [
-            'updated_by' => $userAuth,
-            'com_code' => $com_code,
-        ]);
+        try {
+            $userAuth = Auth::user()->id;
+            $com_code = Auth::user()->com_code;
+            $validateData = $request->validated();
+            $dataUpdate = array_merge($validateData, [
+                'updated_by' => $userAuth,
+                'com_code' => $com_code,
+            ]);
 
-        $adminPanelSetting->update($dataUpdate);
-        if ($request->hasFile('logo')) {
-            // Remove old image if exists
-            $adminPanelSetting->clearMediaCollection('logo');
+            $adminPanelSetting->update($dataUpdate);
+            if ($request->hasFile('logo')) {
+                // Remove old image if exists
+                $adminPanelSetting->clearMediaCollection('logo');
 
-            // Upload new image
-            $adminPanelSetting->addMediaFromRequest('logo')
-                ->toMediaCollection('logo');
+                // Upload new image
+                $adminPanelSetting->addMediaFromRequest('logo')
+                    ->toMediaCollection('logo');
+            }
+
+            return redirect()->route('dashboard.admin-panel-settings.index')->with('success', 'تم تعديل بيانات الشركة بنجاح');
+        } catch (\Exception $ex) {
+            return redirect()->back()->withErrors(['error' => 'عفوًا لقد حدث خطأ: ' . $ex->getMessage()])->withInput();
         }
-
-        return redirect()->route('dashboard.admin-panel-settings.index')->with('success', 'تم تعديل بيانات الشركة بنجاح');
     }
 }
