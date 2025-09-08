@@ -151,7 +151,13 @@
                                     </div>
                                 </div>
                             </li>
-                            <x-image-preview name='logo' />
+                            <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+
+                                <div class="col-md-10  mx-auto mt-2">
+
+                                    <x-image-preview name='logo' />
+                                </div>
+                            </li>
 
 
                             <li class="row my-2 mx-auto">
