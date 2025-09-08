@@ -9,11 +9,6 @@
     ])
 
     @include('dashboard.layouts.message')
-    @if (session('success') != null)
-        <div class="alert alert-success text-center">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="row">
         <!-- Modal Start -->
         <div class="col-12 mt-4">
