@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('treasuries', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255);
+            $table->string('slug')->unique();
+            $table->tinyInteger('is_master')->default(2); //هل خزنه رئيسية ام لا (2  = ليست خزنه رئيسية)
+            $table->bigInteger('last_payment_receipt'); //رقم آخر إيصال للصرف
+            $table->bigInteger('last_collection_receipt'); //رقم آخر إيصال للتحصيل
+            $table->integer('created_by');
+            $table->integer('updated_by')->nullable();
+            $table->integer('com_code')->nullable();
             $table->timestamps();
         });
     }
