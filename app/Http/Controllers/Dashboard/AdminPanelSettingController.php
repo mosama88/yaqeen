@@ -34,13 +34,14 @@ class AdminPanelSettingController extends Controller
         ]);
 
         $adminPanelSetting->update($dataUpdate);
-        // Remove old image if exists
-        $adminPanelSetting->clearMediaCollection('logo');
+        if ($request->hasFile('logo')) {
+            // Remove old image if exists
+            $adminPanelSetting->clearMediaCollection('logo');
 
-        // Upload new image
-        $adminPanelSetting->addMediaFromRequest('logo')
-            ->toMediaCollection('logo');
-
+            // Upload new image
+            $adminPanelSetting->addMediaFromRequest('logo')
+                ->toMediaCollection('logo');
+        }
 
         return redirect()->route('dashboard.admin-panel-settings.index')->with('success', 'تم تعديل بيانات الشركة بنجاح');
     }
