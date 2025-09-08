@@ -22,6 +22,19 @@
                     <h5 class="title mb-0">جدول الضبط العام للشركة</h5>
                 </div>
 
+                @if ($adminPanelSetting->getFirstMediaUrl('logo', 'preview'))
+                    <div class="card-body p-2">
+                        <img src="{{ $adminPanelSetting->getFirstMediaUrl('logo', 'preview') }}" class="img-fluid rounded"
+                            alt="work-image">
+                    </div>
+                @else
+                    <div class="card-body p-2">
+                        <img src="{{ asset('dashboard') }}/assets/images/crypto/blocknet.png" class="img-fluid rounded"
+                            alt="work-image">
+                    </div>
+                @endif
+
+
                 <div class="p-4">
                     <form action="{{ route('dashboard.admin-panel-settings.update', $adminPanelSetting->slug) }}"
                         method="POST" enctype="multipart/form-data">
@@ -138,6 +151,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <x-image-preview name='logo' />
 
 
                             <li class="row my-2 mx-auto">

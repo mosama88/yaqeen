@@ -32,6 +32,15 @@ class AdminPanelSettingController extends Controller
             'updated_by' => $userAuth,
             'com_code' => $com_code,
         ]);
+
+        // Remove old image if exists
+        $adminPanelSetting->clearMediaCollection('logo');
+
+        // Upload new image
+        $adminPanelSetting->addMediaFromRequest('logo')
+            ->toMediaCollection('logo');
+
+
         $adminPanelSetting->update($dataUpdate);
         return redirect()->route('dashboard.admin-panel-settings.index')->with('success', 'تم تعديل بيانات الشركة بنجاح');
     }

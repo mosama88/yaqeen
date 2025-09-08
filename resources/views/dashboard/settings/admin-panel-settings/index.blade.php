@@ -63,6 +63,39 @@
                                 @endif
                             </span>
                         </li>
+                        <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                            <div>
+                                <h6 class="my-0">شعار الشركة</h6>
+                                <small class="text-muted"></small>
+                            </div>
+
+                            <span class="text-muted">
+
+                                @if ($adminPanelSetting->getFirstMediaUrl('logo', 'preview'))
+                                    <div
+                                        class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
+                                        <div class="card-body p-0">
+
+                                            <img src="{{ $adminPanelSetting->getFirstMediaUrl('logo', 'preview') }}"
+                                                class="img-fluid rounded" alt="work-image">
+                                        </div>
+                                    </div>
+                                @else
+                                    <div
+                                        class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
+                                        <div class="card-body p-0">
+
+                                            <img src="{{ asset('dashboard') }}/assets/images/crypto/blocknet.png"
+                                                class="img-fluid rounded" alt="work-image">
+                                        </div>
+                                    </div>
+                                @endif
+                            </span>
+
+
+                        </li>
+
+
                         <li class="row my-2 mx-auto">
                             <a href="{{ route('dashboard.admin-panel-settings.edit', $adminPanelSetting->slug) }}"
                                 class="w-100 btn btn-info" type="submit"><i class="fa-solid fa-pen-to-square me-2"></i>
