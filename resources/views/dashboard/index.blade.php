@@ -1,7 +1,21 @@
 @extends('dashboard.layouts.master')
 @section('title', 'لوحة التحكم')
 @section('content')
+    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <h6 class="text-muted mb-1">Welcome back, Cristina!</h6>
+                            <h5 class="mb-0">Dashboard</h5>
+                        </div>
 
+                        <div class="mb-0 position-relative">
+                            <select class="form-select form-control" id="dailychart">
+                                <option selected="">This Month</option>
+                                <option value="aug">August</option>
+                                <option value="jul">July</option>
+                                <option value="jun">June</option>
+                            </select>
+                        </div>
+                    </div>
 
     <div class="row row-cols-xl-5 row-cols-md-2 row-cols-1">
         <div class="col mt-4">

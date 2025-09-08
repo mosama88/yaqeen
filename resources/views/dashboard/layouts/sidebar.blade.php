@@ -16,6 +16,11 @@
             <li>
                 <a href="{{ route('dashboard.index') }}"><i class="fa-solid fa-house me-2"></i>لوحة التحكم</a>
             </li>
+            <li>
+                <a href="{{ route('dashboard.admin-panel-settings.index') }}"><i
+                        class="fa-solid fa-sliders me-2"></i>إعدادت
+                    الشركة</a>
+            </li>
 
             <li class="sidebar-dropdown">
                 <a href="javascript:void(0)"><i class="ti ti-apps me-2"></i>Apps</a>
