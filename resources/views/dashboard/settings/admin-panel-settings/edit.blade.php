@@ -156,6 +156,11 @@
                                 <div class="col-md-10  mx-auto mt-2">
 
                                     <x-image-preview name='logo' />
+                                    @error('logo')
+                                        <span class="invalid-feedback d-block text-danger">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
 

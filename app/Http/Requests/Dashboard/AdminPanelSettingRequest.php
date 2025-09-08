@@ -28,6 +28,7 @@ class AdminPanelSettingRequest extends FormRequest
             'phone' => 'required|string|max:20',
             'email' => 'required|email|max:255',
             'address' => 'required|string|max:255',
+            'logo' => 'nullable|image|max:5000',
             'active' => [
                 'nullable',
                 Rule::in(array_column(StatusActiveEnum::cases(), 'value')),

@@ -33,6 +33,7 @@ class AdminPanelSettingController extends Controller
             'com_code' => $com_code,
         ]);
 
+        $adminPanelSetting->update($dataUpdate);
         // Remove old image if exists
         $adminPanelSetting->clearMediaCollection('logo');
 
@@ -41,7 +42,6 @@ class AdminPanelSettingController extends Controller
             ->toMediaCollection('logo');
 
 
-        $adminPanelSetting->update($dataUpdate);
         return redirect()->route('dashboard.admin-panel-settings.index')->with('success', 'تم تعديل بيانات الشركة بنجاح');
     }
 }
