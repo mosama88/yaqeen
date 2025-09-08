@@ -1,3 +1,7 @@
+@php
+    use App\Enums\StatusActiveEnum;
+
+@endphp
 @extends('dashboard.layouts.master')
 @section('title', 'تعديل إعدادت الشركة')
 @section('content')
@@ -104,21 +108,38 @@
                                     </div>
                                 </div>
                             </li>
-                            {{-- <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
-                            <div>
-                                <h6 class="my-0">الحالة</h6>
-                                <small class="text-muted"></small>
-                            </div>
-                            <span class="text-muted">
-                                @if ($adminPanelSetting->active->value == 1)
-                                    <span
-                                        class="badge badge-link rounded-pill bg-primary">{{ $adminPanelSetting->active->label() }}</span>
-                                @else
-                                    <span
-                                        class="badge badge-link rounded-pill bg-danger">{{ $adminPanelSetting->active->label() }}</span>
-                                @endif
-                            </span>
-                        </li> --}}
+
+
+                            <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                                <div>
+                                    <h6 class="my-0">الحالة</h6>
+                                    <small class="text-muted"></small>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+
+                                        <select name="active"
+                                            class="form-select form-control @error('active') is-invalid @enderror"
+                                            aria-label="Default select example">
+                                            <option selected value="">-- أختر الحالة--</option>
+                                            <option @if (old('active', $adminPanelSetting->active) == StatusActiveEnum::Active) selected @endif
+                                                value="{{ StatusActiveEnum::Active }}">
+                                                {{ StatusActiveEnum::Active->label() }}</option>
+                                            <option @if (old('active', $adminPanelSetting->active) == StatusActiveEnum::Inactive) selected @endif
+                                                value="{{ StatusActiveEnum::Inactive }}">
+                                                {{ StatusActiveEnum::Inactive->label() }}</option>
+                                        </select>
+                                        @error('active')
+                                            <span class="invalid-feedback d-block text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </li>
+
+
                             <li class="row my-2 mx-auto">
                                 <button type="submit" class="btn btn-primary"> <i
                                         class="fa-solid fa-pen-to-square me-2"></i>تعديل</button>
@@ -134,7 +155,6 @@
         </div><!--end col-->
         <!-- Modal End -->
     </div>
-
 
 
 
