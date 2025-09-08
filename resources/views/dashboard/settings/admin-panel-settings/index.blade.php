@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('title', 'إعدادت الشركة')
 @section('content')
-
     @include('dashboard.layouts.breadcrumb', [
         'titlePage' => 'إعدادت الشركة',
         'PreviousPage' => 'لوحة التحكم',
@@ -9,7 +8,12 @@
         'currentPage' => 'إعدادت الشركة',
     ])
 
-
+    @include('dashboard.layouts.message')
+    @if (session('success') != null)
+        <div class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="row">
         <!-- Modal Start -->
         <div class="col-12 mt-4">
