@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\AdminPanelSettingRequest;
 use Illuminate\Http\Request;
 use App\Models\AdminPanelSetting;
 use Illuminate\Support\Facades\Auth;
@@ -20,5 +21,18 @@ class AdminPanelSettingController extends Controller
     public function edit(AdminPanelSetting $adminPanelSetting)
     {
         return view('dashboard.settings.admin-panel-settings.edit', compact('adminPanelSetting'));
+    }
+
+    public function update(AdminPanelSettingRequest $request, AdminPanelSetting $adminPanelSetting)
+    {
+        $userAuth = Auth::user()->id;
+        $com_code = Auth::user()->com_code;
+        $validateData = $request->validated();
+        $dataUpdate = array_merge($validateData, [
+            'updated_by' => $userAuth,
+            'com_code' => $com_code,
+        ]);
+        $adminPanelSetting->update($dataUpdate);
+        return redirect()->route('dashboard.admin-panel-settings.index')->with('success', 'تم تعديل بيانات الشركة بنجاح');
     }
 }

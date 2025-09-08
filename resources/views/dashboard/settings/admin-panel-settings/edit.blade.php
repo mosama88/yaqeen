@@ -19,36 +19,92 @@
                 </div>
 
                 <div class="p-4">
-                    <ul class="list-group mb-3 border">
-                        <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
-                            <div>
-                                <h6 class="my-0">أسم الشركة</h6>
-                                <small class="text-muted"></small>
-                            </div>
-                            <span class="text-muted">{{ $adminPanelSetting->company_name }}</span>
-                        </li>
-                        <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
-                            <div>
-                                <h6 class="my-0">التليفون</h6>
-                                <small class="text-muted"></small>
-                            </div>
-                            <span class="text-muted">{{ $adminPanelSetting->phone }}</span>
-                        </li>
-                        <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
-                            <div>
-                                <h6 class="my-0">البريد الالكترونى</h6>
-                                <small class="text-muted"></small>
-                            </div>
-                            <span class="text-muted">{{ $adminPanelSetting->email }}</span>
-                        </li>
-                        <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
-                            <div>
-                                <h6 class="my-0">العنوان</h6>
-                                <small class="text-muted"></small>
-                            </div>
-                            <span class="text-muted">{{ $adminPanelSetting->address }}</span>
-                        </li>
-                        <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                    <form action="{{ route('dashboard.admin-panel-settings.update', $adminPanelSetting->slug) }}"
+                        method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <ul class="list-group mb-3 border">
+                            <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                                <div>
+                                    <h6 class="my-0">أسم الشركة</h6>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <input name="company_name" value="{{ $adminPanelSetting->company_name }}"
+                                            id="company_name" type="text"
+                                            class="form-control @error('company_name') is-invalid @enderror"
+                                            placeholder="أسم الشركة">
+                                        @error('company_name')
+                                            <span class="invalid-feedback d-block text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                            </li>
+                            <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                                <div>
+                                    <h6 class="my-0">التليفون</h6>
+                                    <small class="text-muted"></small>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <input name="phone" value="{{ $adminPanelSetting->phone }}" id="phone"
+                                            type="text" class="form-control @error('phone') is-invalid @enderror"
+                                            placeholder="رقم التليفون">
+                                        @error('phone')
+                                            <span class="invalid-feedback d-block text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                            </li>
+                            <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                                <div>
+                                    <h6 class="my-0">البريد الالكترونى</h6>
+                                    <small class="text-muted"></small>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <input name="email" value="{{ old('email', $adminPanelSetting->email) }}"
+                                            id="email" type="text"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="البريد الالكترونى">
+                                        @error('email')
+                                            <span class="invalid-feedback d-block text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
+                                <div>
+                                    <h6 class="my-0">العنوان</h6>
+                                    <small class="text-muted"></small>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <input name="address" value="{{ $adminPanelSetting->address }}" id="address"
+                                            type="text" class="form-control @error('address') is-invalid @enderror"
+                                            placeholder="العنوان">
+                                        @error('address')
+                                            <span class="invalid-feedback d-block text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </li>
+                            {{-- <li class="d-flex justify-content-between lh-sm p-3 border-bottom">
                             <div>
                                 <h6 class="my-0">الحالة</h6>
                                 <small class="text-muted"></small>
@@ -62,12 +118,15 @@
                                         class="badge badge-link rounded-pill bg-danger">{{ $adminPanelSetting->active->label() }}</span>
                                 @endif
                             </span>
-                        </li>
-                        <li class="row my-2 mx-auto">
-                            <a href="{{ route('') }}" class="w-100 btn btn-info" type="submit"><i
-                                    class="fa-solid fa-pen-to-square me-2"></i> تعديل </a>
-                        </li>
-                    </ul>
+                        </li> --}}
+                            <li class="row my-2 mx-auto">
+                                <button type="submit" class="btn btn-primary"> <i
+                                        class="fa-solid fa-pen-to-square me-2"></i>تعديل</button>
+
+                            </li>
+                        </ul>
+                    </form>
+
 
                 </div>
 

@@ -64,8 +64,9 @@
                             </span>
                         </li>
                         <li class="row my-2 mx-auto">
-                            <a href="{{route('')}}" class="w-100 btn btn-info" type="submit"><i
-                                    class="fa-solid fa-pen-to-square me-2"></i> تعديل </a>
+                            <a href="{{ route('dashboard.admin-panel-settings.edit', $adminPanelSetting->slug) }}"
+                                class="w-100 btn btn-info" type="submit"><i class="fa-solid fa-pen-to-square me-2"></i>
+                                تعديل </a>
                         </li>
                     </ul>
 
