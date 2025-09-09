@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AdminPanelSettingSeeder::class,
+            TreasurySeeder::class,
         ]);
     }
 }

@@ -7,6 +7,7 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Enums\Treasury\TreasuryIsMaster;
+use App\Enums\StatusActiveEnum;
 
 class Treasury extends Model
 {
@@ -20,6 +21,7 @@ class Treasury extends Model
         'is_master',
         'last_payment_receipt',
         'last_collection_receipt',
+        'active',
         'created_by',
         'updated_by',
         'com_code'
@@ -53,5 +55,6 @@ class Treasury extends Model
 
     protected $casts = [
         'is_master' => TreasuryIsMaster::class,
+        'active' => StatusActiveEnum::class,
     ];
 }

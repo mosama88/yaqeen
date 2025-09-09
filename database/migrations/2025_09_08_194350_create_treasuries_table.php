@@ -18,6 +18,7 @@ return new class extends Migration
             $table->tinyInteger('is_master')->default(2); //هل خزنه رئيسية ام لا (2  = ليست خزنه رئيسية)
             $table->bigInteger('last_payment_receipt'); //رقم آخر إيصال للصرف
             $table->bigInteger('last_collection_receipt'); //رقم آخر إيصال للتحصيل
+            $table->tinyInteger('active')->default(1); //حالة التفعيل
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
             $table->integer('com_code')->nullable();

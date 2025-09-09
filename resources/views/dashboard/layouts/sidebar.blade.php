@@ -16,19 +16,13 @@
             <li>
                 <a href="{{ route('dashboard.index') }}"><i class="fa-solid fa-house me-2"></i>لوحة التحكم</a>
             </li>
-            <li>
-                <a href="{{ route('dashboard.admin-panel-settings.index') }}"><i
-                        class="fa-solid fa-sliders me-2"></i>إعدادت
-                    الشركة</a>
-            </li>
 
             <li class="sidebar-dropdown">
-                <a href="javascript:void(0)"><i class="ti ti-apps me-2"></i>Apps</a>
+                <a href="javascript:void(0)"><i class="fa-solid fa-sliders me-2"></i>الأعدادات العامة</a>
                 <div class="sidebar-submenu">
                     <ul>
-                        <li><a href="chat.html">Chat</a></li>
-                        <li><a href="email.html">Email</a></li>
-                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a></li>
+                        <li><a href="{{ route('dashboard.treasuries.index') }}">الخزن</a></li>
                     </ul>
                 </div>
             </li>

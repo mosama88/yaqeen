@@ -122,14 +122,14 @@
                             <img src="{{ asset('dashboard') }}/assets/images/client/05.jpg"
                                 class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                             <div class="flex-1 ms-2">
-                                <span class="d-block">Cristina Julia</span>
-                                <small class="text-muted">UI / UX Designer</small>
+                                <span class="d-block">{{ Auth::user()->name }}</span>
+                                <small class="text-muted">{{ Auth::user()->username }}</small>
                             </div>
                         </a>
-                        <a class="dropdown-item text-dark" href="index.html"><span
+                        <a class="dropdown-item text-dark" href="{{ route('dashboard.index') }}"><span
                                 class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span>
-                            Dashboard</a>
-                        <a class="dropdown-item text-dark" href="profile.html"><span
+                            لوحة التحكم</a>
+                        <a class="dropdown-item text-dark" href="{{ route('dashboard.profile.edit') }}"><span
                                 class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span>
                             Profile</a>
                         <a class="dropdown-item text-dark" href="email.html"><span
