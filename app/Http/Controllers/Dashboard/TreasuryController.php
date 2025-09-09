@@ -32,7 +32,18 @@ class TreasuryController extends Controller
      */
     public function store(TreasuryRequest $request)
     {
-        //
+        try {
+            $com_code = Auth::user()->com_code;
+            $validateData = $request->validated();
+            $validateData['com_code'] = $com_code;
+            $validateData['created_by'] = Auth::user()->id;
+            Treasury::create($validateData);
+            return redirect()->route('dashboard.treasuries.index')->with('success', 'تم إضافة الخزنه بنجاح');
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('dashboard.treasuries.index')
+                ->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -53,9 +64,20 @@ class TreasuryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TreasuryRequest $request, Treasury $treasury)
     {
-        //
+        try {
+            $com_code = Auth::user()->com_code;
+            $validateData = $request->validated();
+            $validateData['com_code'] = $com_code;
+            $validateData['updated_by'] = Auth::user()->id;
+            $treasury->update($validateData);
+            return redirect()->route('dashboard.treasuries.index')->with('success', 'تم تعديل الخزنه بنجاح');
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('dashboard.treasuries.index')
+                ->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -66,7 +88,16 @@ class TreasuryController extends Controller
         try {
             $com_code = Auth::user()->com_code;
 
-            $treasury->where('com_code', $com_code)->delete();
+            // Verify the treasury belongs to the user's company before deleting
+            if ($treasury->com_code != $com_code) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'غير مصرح لك بحذف هذه الخزنة'
+                ], 403);
+            }
+
+
+            $treasury->delete();
             return response()->json([
                 'success' => true,
                 'message' => 'تم حذف الخزنه بنجاح'

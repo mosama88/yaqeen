@@ -57,8 +57,7 @@ class AdminPanelSettingRequest extends FormRequest
             'address.string' => 'العنوان يجب أن يكون نص.',
             'address.max'    => 'العنوان لا يجب أن يزيد عن 255 حرف.',
 
-            'active.required' => 'حالة التفعيل مطلوبة.',
-            'active.in'       => 'حالة التفعيل يجب أن تكون إما 0 (غير مفعل) أو 1 (مفعل).',
+            'active.in'       => 'حالة التفعيل (الحالة غير موجودة).',
         ];
     }
 }

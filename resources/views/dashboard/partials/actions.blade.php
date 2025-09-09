@@ -1,30 +1,26 @@
 <div class="btn-group dropdown-primary">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         الأجراءات
     </button>
     <div class="dropdown-menu">
-        <a href="{{ route('dashboard.' . $name . '.edit', $name_id) }}" class="dropdown-item">تعديل</a>
-        <a href="{{ route('dashboard.' . $name . '.show', $name_id) }}" class="dropdown-item">عرض</a>
+        <a href="{{ route('dashboard.' . $name . '.edit', $name_id) }}" class="dropdown-item text-info"><i
+                class="fa-solid fa-pen-to-square me-2"></i> تعديل</a>
+        <a href="{{ route('dashboard.' . $name . '.show', $name_id) }}" class="dropdown-item"><i
+                class="fa-solid fa-eye me-2 text-primary"></i> عرض</a>
         <form id="delete-form-{{ $name_id }}" action="{{ route('dashboard.' . $name . '.destroy', $name_id) }}"
             method="POST" style="display: none;">
             @csrf
             @method('DELETE')
         </form>
-        <a href="javascript:void(0)" id="delete_one" data-id="{{ $name_id }}"
-            class="dropdown-item delete-btn">حذف</a>
+        <a href="javascript:void(0)" id="delete_one" data-id="{{ $name_id }}" class="dropdown-item delete-btn text-danger"><i
+                class="fa-solid fa-trash-can me-2"></i> حذف</a>
     </div>
 </div>
 
 
-
-
-
-
-
-
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('dashboard') }}/assets/js/sweetalert2@11.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

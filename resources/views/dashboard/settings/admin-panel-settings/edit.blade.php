@@ -1,6 +1,5 @@
 @php
     use App\Enums\StatusActiveEnum;
-
 @endphp
 @extends('dashboard.layouts.master')
 @section('title', 'تعديل إعدادت الشركة')

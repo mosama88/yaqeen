@@ -1,3 +1,6 @@
+@php
+    use App\Enums\Treasury\TreasuryIsMaster;
+@endphp
 @extends('dashboard.layouts.master')
 @section('title', 'الخزن')
 @section('content')
@@ -22,64 +25,60 @@
                     <form action="{{ route('dashboard.treasuries.store') }}" method="POST" id="storeForm">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">أسم الخزنه<span class="text-danger mx-1">*</span></label>
-                                    <div class="form-icon position-relative">
-                                        <input name="name" id="name" type="text"
-                                            class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="أسم الخزنه :">
-                                        @error('name')
-                                            <span class="invalid-feedback d-block text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">أسم الخزنه<span class="text-danger mx-1">*</span></label>
+                                <input name="name" value="{{old('name')}}" id="name" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="أسم الخزنه :">
+                                @error('name')
+                                    <span class="invalid-feedback d-block text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div><!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Your Email <span class="text-danger">*</span></label>
-                                    <div class="form-icon position-relative">
-                                        <input name="email" id="email" type="email"
-                                            class="form-control @error('company_name') is-invalid @enderror"
-                                            placeholder="Your email :">
-                                        @error('company_name')
-                                            <span class="invalid-feedback d-block text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Subject</label>
-                                    <div class="form-icon position-relative">
-                                        <input name="subject" id="subject"
-                                            class="form-control @error('company_name') is-invalid @enderror"
-                                            placeholder="Your subject :">
-                                        @error('company_name')
-                                            <span class="invalid-feedback d-block text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Comments</label>
-                                    <div class="form-icon position-relative">
-                                        <textarea name="comments" id="comments" rows="4" class="form-control @error('company_name') is-invalid @enderror"
-                                            placeholder="Your Message :"></textarea>
-                                        @error('company_name')
-                                            <span class="invalid-feedback d-block text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">هل رئيسية <span class="text-danger">*</span></label>
+                                <select name="is_master"
+                                    class="form-select form-control @error('is_master') is-invalid @enderror"
+                                    aria-label="Default select example">
+                                    <option selected value="">-- أختر النوع--</option>
+                                    <option @if (old('is_master') == TreasuryIsMaster::Main) selected @endif
+                                        value="{{ TreasuryIsMaster::Main }}">
+                                        {{ TreasuryIsMaster::Main->label() }}</option>
+                                    <option @if (old('is_master') == TreasuryIsMaster::SubBranch) selected @endif
+                                        value="{{ TreasuryIsMaster::SubBranch }}">
+                                        {{ TreasuryIsMaster::SubBranch->label() }}</option>
+                                </select>
+                                @error('is_master')
+                                    <span class="invalid-feedback d-block text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <!--end col-->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">آخر رقم إيصال صرف نقدية لهذه الخزينه</label>
+                                <input name="last_payment_receipt" value="{{old('last_payment_receipt')}}" id="last_payment_receipt"
+                                    class="form-control @error('last_payment_receipt') is-invalid @enderror"
+                                    placeholder="إدخل رقم الايصال :"
+                                    oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
+                                @error('last_payment_receipt')
+                                    <span class="invalid-feedback d-block text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">آخر رقم إيصال تحصيل نقدية لهذه الخزينه</label>
+                                <input name="last_collection_receipt" value="{{old('last_collection_receipt')}}" id="last_collection_receipt"
+                                    class="form-control @error('last_collection_receipt') is-invalid @enderror"
+                                    placeholder="إدخل رقم الايصال :"
+                                    oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
+                                @error('last_collection_receipt')
+                                    <span class="invalid-feedback d-block text-danger">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div><!--end row-->
                         <div class="row">
