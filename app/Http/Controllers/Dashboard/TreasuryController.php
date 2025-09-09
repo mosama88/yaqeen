@@ -15,9 +15,7 @@ class TreasuryController extends Controller
      */
     public function index()
     {
-        $com_code = Auth::user()->com_code;
-        $data = Treasury::orderByDesc('id')->where('com_code', $com_code)->paginate(10);
-        return view('dashboard.settings.treasuries.index', compact('data'));
+        return view('dashboard.settings.treasuries.index');
     }
     /**
      * Show the form for creating a new resource.
