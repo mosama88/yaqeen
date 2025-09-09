@@ -4,14 +4,13 @@ namespace App\Models;
 
 use App\Enums\StatusActiveEnum;
 use Spatie\Image\Enums\Fit;
-use Spatie\Sluggable\HasSlug;
 use Spatie\MediaLibrary\HasMedia;
-use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\PanelSettingSystemStatusEnum;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AdminPanelSetting extends Model implements HasMedia
 {
