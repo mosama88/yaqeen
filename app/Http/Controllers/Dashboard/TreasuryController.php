@@ -24,13 +24,13 @@ class TreasuryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.settings.treasuries.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TreasuryRequest $request)
     {
         //
     }
@@ -38,19 +38,18 @@ class TreasuryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Treasury $treasury)
     {
-        //
+        return view('dashboard.settings.treasuries.show', compact('treasury'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Treasury $treasury)
     {
-        //
+        return view('dashboard.settings.treasuries.edit', compact('treasury'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -62,8 +61,22 @@ class TreasuryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Treasury $treasury)
     {
-        //
+        try {
+            $com_code = Auth::user()->com_code;
+
+            $treasury->where('com_code', $com_code)->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'تم حذف الخزنه بنجاح'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'حدث خطأ أثناء محاولة الحذف',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

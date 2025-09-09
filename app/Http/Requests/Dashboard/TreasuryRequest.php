@@ -22,7 +22,10 @@ class TreasuryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'is_master' => 'required|in:1,2',
+            'last_payment_receipt' => 'nullable|integer|min:0',
+            'last_collection_receipt' => 'nullable|integer|min:0',
         ];
     }
 }

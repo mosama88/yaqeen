@@ -11,11 +11,12 @@
     @include('dashboard.layouts.message')
 
 
-    <div class="row">
+    <div class="row my-3">
+        <x-add-new-button-component url="treasuries.create"></x-add-new-button-component>
         <div class="col-12 mt-4">
             <div class="table-responsive bg-white shadow rounded">
                 <table class="table mb-0 table-center">
-                    <thead class="bg-secondary text-white rounded-top">
+                    <thead class="bg-light rounded-top">
                         <tr>
                             <th class="border-bottom py-3" style="min-width:20px ">#</th>
                             <th>أسم الخزنة</th>
@@ -64,31 +65,27 @@
 
                                 </td>
                                 <td>
-                                    <div class="btn-group dropdown-primary">
-                                        <button type="button" class="btn btn-primary dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            الأجراءات
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a href="javascript:void(0)" class="dropdown-item">تعديل</a>
-                                            <a href="javascript:void(0)" class="dropdown-item">عرض</a>
-                                            <a href="javascript:void(0)" class="dropdown-item">حذف</a>
-                                        </div>
-                                    </div>
+                                    @include('dashboard.partials.actions', [
+                                        'name' => 'treasuries',
+                                        'name_id' => $info,
+                                    ])
                                 </td>
                             </tr>
                         @empty
-                            <div class="d-block">
+                            <div class="my-4 d-block p-3 mx-auto">
                                 <div class="alert alert-primary alert-pills" role="alert">
                                     <span class="badge rounded-pill bg-info me-1">ملحوظة</span>
-                                    <span class="content"> عفوآ لا توجد بيانات لعرضها! <i
-                                            class="uil uil-angle-right-b"></i></span>
+                                    <span class="content"> !عفوآ لا توجد بيانات لعرضها </span>
                                 </div>
                             </div>
                         @endforelse
 
                     </tbody>
                 </table>
+
+                <div class="row">
+                    {{ $data->links() }}
+                </div>
             </div>
         </div><!--end col-->
     </div>
