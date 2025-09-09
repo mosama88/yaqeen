@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Enums\StatusActiveEnum;
 use App\Enums\Treasury\TreasuryIsMaster;
+use App\Models\Treasury;
+use Illuminate\Support\Facades\Auth;
+
 
 class TreasuryRequest extends FormRequest
 {
@@ -31,6 +34,23 @@ class TreasuryRequest extends FormRequest
             'is_master' => [
                 'required',
                 Rule::in(array_column(TreasuryIsMaster::cases(), 'value')),
+                function ($attribute, $value, $fail) use ($treasuryId) {
+                    $com_code = Auth::user()->com_code;
+
+                    // If trying to set as master, check if another master already exists
+                    if ($value == TreasuryIsMaster::Master->value) {
+                        $existingMaster = Treasury::where('com_code', $com_code)
+                            ->where('is_master', TreasuryIsMaster::Master->value)
+                            ->when($treasuryId, function ($query) use ($treasuryId) {
+                                $query->where('id', '!=', $treasuryId);
+                            })
+                            ->exists();
+
+                        if ($existingMaster) {
+                            $fail('يوجد بالفعل خزنة رئيسية واحدة. لا يمكن وجود أكثر من خزنة رئيسية.');
+                        }
+                    }
+                },
             ],
             'active' => [
                 'nullable',

@@ -41,9 +41,9 @@
                                     class="form-select form-control @error('is_master') is-invalid @enderror"
                                     aria-label="Default select example">
                                     <option selected value="">-- أختر النوع--</option>
-                                    <option @if (old('is_master') == TreasuryIsMaster::Main) selected @endif
-                                        value="{{ TreasuryIsMaster::Main }}">
-                                        {{ TreasuryIsMaster::Main->label() }}</option>
+                                    <option @if (old('is_master') == TreasuryIsMaster::Master) selected @endif
+                                        value="{{ TreasuryIsMaster::Master }}">
+                                        {{ TreasuryIsMaster::Master->label() }}</option>
                                     <option @if (old('is_master') == TreasuryIsMaster::SubBranch) selected @endif
                                         value="{{ TreasuryIsMaster::SubBranch }}">
                                         {{ TreasuryIsMaster::SubBranch->label() }}</option>
