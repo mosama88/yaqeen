@@ -17,7 +17,7 @@ class TreasurySeeder extends Seeder
 
         Treasury::create([
             'name' => 'الرئيسية',
-            'is_master' => TreasuryIsMaster::Main->value,
+            'is_master' => TreasuryIsMaster::Master->value,
             'last_payment_receipt' => 0,
             'last_collection_receipt' => 0,
             'created_by' => 1,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\TreasuryRequest;
 use Illuminate\Http\Request;
+use App\Models\TreasuryDelivery;
 use App\Models\Treasury;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,7 +50,8 @@ class TreasuryController extends Controller
      */
     public function show(Treasury $treasury)
     {
-        return view('dashboard.settings.treasuries.show', compact('treasury'));
+        $treasury_deliveries = TreasuryDelivery::where('treasury_id', $treasury->id)->orderByDesc('id')->get();
+        return view('dashboard.settings.treasuries.show', compact('treasury', 'treasury_deliveries'));
     }
 
     /**
