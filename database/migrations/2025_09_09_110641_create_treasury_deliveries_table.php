@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('treasury_deliveries', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Treasury::class)->nullable()->constrained()->nullOnDelete();
-            $table->integer('treasuries_can_delivery')->default(1); //الخزن التى سيتم تسليمها
+            $table->foreignId('treasuries_can_delivery')->nullable()->references('id')->on('treasuries')->onUpdate('cascade');
             $table->tinyInteger('active')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();

@@ -23,5 +23,7 @@ class TreasurySeeder extends Seeder
             'created_by' => 1,
             'com_code' => 1,
         ]);
+
+        Treasury::factory(300)->create();
     }
 }

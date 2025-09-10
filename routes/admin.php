@@ -19,6 +19,8 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
 
     //الخزائن
     Route::resource('treasuries', TreasuryController::class);
+    Route::delete('/treasury_deliveries/{id}', [TreasuryController::class, 'destroy_treasury_deliveries'])->name('treasury_deliveries.destroy');
+    Route::post('/treasury_deliveries/{id}', [TreasuryController::class, 'store_treasury_deliveries'])->name('treasury_deliveries.store');
 
 
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');

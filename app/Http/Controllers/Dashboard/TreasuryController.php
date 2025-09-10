@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\TreasuryDeliveryRequest;
 use App\Http\Requests\Dashboard\TreasuryRequest;
 use Illuminate\Http\Request;
 use App\Models\TreasuryDelivery;
@@ -50,8 +51,10 @@ class TreasuryController extends Controller
      */
     public function show(Treasury $treasury)
     {
-        $treasury_deliveries = TreasuryDelivery::where('treasury_id', $treasury->id)->orderByDesc('id')->get();
-        return view('dashboard.settings.treasuries.show', compact('treasury', 'treasury_deliveries'));
+        $com_code = Auth::user()->com_code;
+        $treasuries = Treasury::select('id', 'name')->where('com_code', $com_code)->orderByDesc('id')->get();
+        $treasury_deliveries = TreasuryDelivery::where('treasury_id', $treasury->id)->orderByDesc('id')->paginate(15);
+        return view('dashboard.settings.treasuries.show', compact('treasury', 'treasury_deliveries', 'treasuries'));
     }
 
     /**
@@ -109,5 +112,46 @@ class TreasuryController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+
+    public function destroy_treasury_deliveries($id)
+    {
+        try {
+            $com_code = Auth::user()->com_code;
+            $treasury_delivery = TreasuryDelivery::find($id);
+
+            // Verify the treasury delivery exists and belongs to the user's company before deleting
+            if (!$treasury_delivery || $treasury_delivery->com_code != $com_code) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'غير مصرح لك بحذف هذه الحركة'
+                ], 403);
+            }
+
+            $treasury_delivery->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'تم حذف الحركة بنجاح'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'حدث خطأ أثناء محاولة الحذف',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+
+    public function store_treasury_deliveries($id, TreasuryDeliveryRequest $request)
+    {
+        $com_code = Auth::user()->com_code;
+        $validateData = $request->validated();
+        $validateData['com_code'] = $com_code;
+        $validateData['treasury_id'] = $id; // Use the treasury ID from the route
+        $validateData['created_by'] = Auth::user()->id;
+        TreasuryDelivery::create($validateData);
+        return redirect()->route('dashboard.treasuries.show', $id)->with('success', 'تم إضافة خزينة التسليم بنجاح');
     }
 }

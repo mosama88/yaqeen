@@ -29,6 +29,12 @@ class TreasuryDelivery extends Model
     }
 
 
+      public function treasuriesCanDelivery()
+    {
+        return $this->belongsTo(Treasury::class, 'treasuries_can_delivery');
+    }
+
+
     public function createdBy()
     {
         return $this->belongsTo(Admin::class, 'created_by');
