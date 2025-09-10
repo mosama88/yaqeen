@@ -27,9 +27,10 @@ class TreasuryDeliveryRequest extends FormRequest
      */
     public function rules(): array
     {
+        $TreasuryDeliveryId = $this->route('TreasuryDeliveryId') ? $this->route('TreasuryDeliveryId')->id : null;
 
         return [
-            'treasuries_can_delivery' => 'required|exists:treasuries,id',
+            'treasuries_can_delivery' => 'required|exists:treasuries,id|unique:treasury_deliveries,id,' . $TreasuryDeliveryId,
             'active' => [
                 'nullable',
                 Rule::in(array_column(StatusActiveEnum::cases(), 'value')),

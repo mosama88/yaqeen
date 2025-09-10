@@ -74,7 +74,7 @@
                                                     action="{{ route('dashboard.treasury_deliveries.store', $treasury->id) }}"
                                                     method="POST" id="storeForm">
                                                     @csrf
-                                                    <div class="col-md-6 mb-3">
+                                                    <div class="col-md-12 mb-3">
                                                         <label class="form-label">أختر الخزنه الفرعية<span
                                                                 class="text-danger">*</span></label>
                                                         <select name="treasuries_can_delivery"
@@ -104,13 +104,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </span>
-
-
-
-
-
 
                             <span class="badge bg-primary rounded-pill">{{ $treasury_deliveries->total() }} خزنه</span>
                         </div>
@@ -133,7 +127,7 @@
                                                 <a href="javascript:void(0)"
                                                     class="text-dark">{{ $info->treasuriesCanDelivery->name }}</a>
                                             </td>
-                                            <td>{{ $info->createdBy->name }}</td>
+                                            <td>{{ $info->createdBy->name }} ( {{ $info->created_at }} )</td>
                                             <td title="حذف">
                                                 <form id="delete-form-{{ $info->id }}"
                                                     action="{{ route('dashboard.treasury_deliveries.destroy', $info->id) }}"

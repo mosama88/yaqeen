@@ -52,7 +52,11 @@ class TreasuryController extends Controller
     public function show(Treasury $treasury)
     {
         $com_code = Auth::user()->com_code;
-        $treasuries = Treasury::select('id', 'name')->where('com_code', $com_code)->orderByDesc('id')->get();
+        $treasuries = Treasury::select('id', 'name')
+            ->whereDoesntHave('deliveries') // الخزن اللي ملهاش deliveries
+            ->where('com_code', $com_code)
+            ->orderByDesc('id')
+            ->get();
         $treasury_deliveries = TreasuryDelivery::where('treasury_id', $treasury->id)->orderByDesc('id')->paginate(15);
         return view('dashboard.settings.treasuries.show', compact('treasury', 'treasury_deliveries', 'treasuries'));
     }
@@ -152,6 +156,6 @@ class TreasuryController extends Controller
         $validateData['treasury_id'] = $id; // Use the treasury ID from the route
         $validateData['created_by'] = Auth::user()->id;
         TreasuryDelivery::create($validateData);
-        return redirect()->route('dashboard.treasuries.show', $id)->with('success', 'تم إضافة خزينة التسليم بنجاح');
+        return redirect()->back()->with('success', 'تم إضافة خزينة التسليم بنجاح');
     }
 }

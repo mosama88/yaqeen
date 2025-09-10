@@ -41,6 +41,12 @@ class Treasury extends Model
     }
 
 
+
+    public function deliveries()
+    {
+        return $this->hasMany(TreasuryDelivery::class);
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(Admin::class, 'created_by');
