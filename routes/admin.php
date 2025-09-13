@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\AdminPanelSettingController;
 use App\Http\Controllers\Dashboard\TreasuryController;
 use App\Http\Controllers\Dashboard\SalesMatrialTypeController;
 use App\Http\Controllers\Dashboard\StoreController;
+use App\Http\Controllers\Dashboard\InvUnitController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,6 +30,9 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
 
     //المخازن
     Route::resource('stores', StoreController::class);
+
+    //الوحدات
+    Route::resource('invUnits', InvUnitController::class);
 
 
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');

@@ -25,6 +25,7 @@
                         <li><a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a></li>
                         <li><a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a></li>
                         <li><a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a></li>
+                        <li><a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدة</a></li>
                     </ul>
                 </div>
             </li>
