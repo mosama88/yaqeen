@@ -104,13 +104,13 @@ class TreasuryController extends Controller
             }
 
 
-            $treasuryDelivery = TreasuryDelivery::where('treasury_id', $treasury->id)->first();
-            if ($treasuryDelivery) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'لا يمكن حذف الخزنة لأنها تحتوي على حركات',
-                ], 400);
-            }
+      $treasuryDelivery = TreasuryDelivery::where('treasury_id', $treasury->id)->exists();
+        if ($treasuryDelivery) {
+            return response()->json([
+                'success' => false,
+                'message' => 'لا يمكن حذف الخزنة لأنها تحتوي على حركات',
+            ], 400);
+        }
 
             $treasury->delete();
             return response()->json([

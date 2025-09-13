@@ -23,6 +23,7 @@
                     <ul>
                         <li><a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a></li>
                         <li><a href="{{ route('dashboard.treasuries.index') }}">الخزن</a></li>
+                        <li><a href="{{ route('dashboard.sales_matrial_types.index') }}">بيانات فئات الفواتير</a></li>
                     </ul>
                 </div>
             </li>
