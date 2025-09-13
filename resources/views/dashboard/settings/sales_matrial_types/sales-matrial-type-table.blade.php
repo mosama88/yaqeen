@@ -2,7 +2,8 @@
     <div class="col-6 mt-4">
         <div class="form-icon position-relative">
             <i data-feather="search" class="fea icon-sm icons"></i>
-            <input wire:model.live="name" id="subject" class="form-control ps-5" placeholder="بحث بإسم الخزنه :" autocomplete="off">
+            <input wire:model.live="name" id="subject" class="form-control ps-5" placeholder="بحث بإسم فئة الفاتورة :"
+                autocomplete="off">
         </div>
     </div>
     <div class="col-12 mt-4">
@@ -11,11 +12,8 @@
                 <thead class="bg-light rounded-top">
                     <tr>
                         <th class="border-bottom py-3" style="min-width:20px ">#</th>
-                        <th>أسم الخزنة</th>
-                        <th>هل رئيسية</th>
+                        <th>أسم الفئة</th>
                         <th>حالة التفعيل</th>
-                        <th>آخر إيصال صرف</th>
-                        <th>آخر إيصال تحصيل</th>
                         <th>انشاء بواسطة</th>
                         <th>تحديث بواسطة</th>
                         <th>الأجراءات</th>
@@ -30,13 +28,6 @@
                                 <a href="javascript:void(0)" class="text-dark">{{ $info->name }}</a>
                             </td>
                             <td>
-                                @if ($info->is_master->value == 1)
-                                    <span>{{ $info->is_master->label() }}</span>
-                                @else
-                                    <span>{{ $info->is_master->label() }}</span>
-                                @endif
-                            </td>
-                            <td>
                                 @if ($info->active->value == 1)
                                     <span
                                         class="badge badge-link rounded-pill bg-primary">{{ $info->active->label() }}</span>
@@ -45,8 +36,6 @@
                                         class="badge badge-link rounded-pill bg-danger">{{ $info->active->label() }}</span>
                                 @endif
                             </td>
-                            <td>{{ $info->last_payment_receipt }}</td>
-                            <td>{{ $info->last_collection_receipt }}</td>
                             <td>{{ $info->createdBy->name }}</td>
                             <td>
                                 @if ($info->updated_by > 0)
@@ -58,7 +47,7 @@
                             </td>
                             <td>
                                 @include('dashboard.partials.actions', [
-                                    'name' => 'treasuries',
+                                    'name' => 'sales_matrial_types',
                                     'name_id' => $info,
                                 ])
                             </td>
