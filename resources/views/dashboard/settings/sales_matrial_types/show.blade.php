@@ -7,7 +7,7 @@
     @include('dashboard.layouts.breadcrumb', [
         'titlePage' => 'عرض فئة الفاتورة',
         'PreviousPage' => 'جدول فئة الفاتورة',
-        'UrlPreviousPage' => 'sales_matrial_types.index',
+        'UrlPreviousPage' => 'salesMatrialType.index',
         'currentPage' => 'عرض فئة الفاتورة',
     ])
 

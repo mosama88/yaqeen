@@ -22,7 +22,7 @@
                     <h5 class="title mb-0"> أضافة فئة جديدة </h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('dashboard.sales_matrial_types.store') }}" method="POST" id="storeForm">
+                    <form action="{{ route('dashboard.salesMatrialType.store') }}" method="POST" id="storeForm">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">

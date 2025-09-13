@@ -15,7 +15,7 @@
 
 
     <div class="row my-3">
-        <x-add-new-button-component url="sales_matrial_types.create"></x-add-new-button-component>
+        <x-add-new-button-component url="salesMatrialType.create"></x-add-new-button-component>
 
 
         @livewire(SalesMatrialTypeTable::class)

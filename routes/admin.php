@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\AdminPanelSettingController;
 use App\Http\Controllers\Dashboard\TreasuryController;
 use App\Http\Controllers\Dashboard\SalesMatrialTypeController;
+use App\Http\Controllers\Dashboard\StoreController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,7 +25,11 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     Route::post('/treasury_deliveries/{id}', [TreasuryController::class, 'store_treasury_deliveries'])->name('treasury_deliveries.store');
 
     //بيانات فئات الفواتير
-    Route::resource('sales_matrial_types', SalesMatrialTypeController::class);
+    Route::resource('salesMatrialType', SalesMatrialTypeController::class);
+
+    //المخازن
+    Route::resource('stores', StoreController::class);
+
 
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');

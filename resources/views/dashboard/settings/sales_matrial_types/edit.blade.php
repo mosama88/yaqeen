@@ -7,7 +7,7 @@ use App\Enums\StatusActiveEnum;
     @include('dashboard.layouts.breadcrumb', [
         'titlePage' => 'تعديل فئة الفاتورة',
         'PreviousPage' => 'جدول فئة الفاتورة',
-        'UrlPreviousPage' => 'sales_matrial_types.index',
+        'UrlPreviousPage' => 'salesMatrialType.index',
         'currentPage' => 'تعديل فئة الفاتورة',
     ])
 
@@ -22,7 +22,7 @@ use App\Enums\StatusActiveEnum;
                     <h5 class="title mb-0"> تعديل فئة الفاتورةة </h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('dashboard.sales_matrial_types.update', $salesMatrialType->slug) }}" method="POST" id="updateForm">
+                    <form action="{{ route('dashboard.salesMatrialType.update', $salesMatrialType->slug) }}" method="POST" id="updateForm">
                         @csrf
                         @method('PUT')
                         <div class="row">

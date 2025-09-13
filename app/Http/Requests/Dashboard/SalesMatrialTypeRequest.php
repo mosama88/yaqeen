@@ -23,10 +23,10 @@ class SalesMatrialTypeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $treasuryId = $this->route('treasury') ? $this->route('treasury')->id : null;
+        $salesMatrialTypeId = $this->route('salesMatrialType') ? $this->route('salesMatrialType')->id : null;
 
         return [
-            'name' => 'required|string|max:255|unique:treasuries,name,' . $treasuryId,
+            'name' => 'required|string|max:255|unique:sales_matrial_types,name,' . $salesMatrialTypeId,
 
             'active' => [
                 'nullable',

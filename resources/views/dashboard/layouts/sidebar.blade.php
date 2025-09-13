@@ -22,8 +22,9 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li><a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a></li>
-                        <li><a href="{{ route('dashboard.treasuries.index') }}">الخزن</a></li>
-                        <li><a href="{{ route('dashboard.sales_matrial_types.index') }}">بيانات فئات الفواتير</a></li>
+                        <li><a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a></li>
+                        <li><a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a></li>
+                        <li><a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a></li>
                     </ul>
                 </div>
             </li>

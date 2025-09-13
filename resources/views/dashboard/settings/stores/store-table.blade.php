@@ -2,7 +2,7 @@
     <div class="col-6 mt-4">
         <div class="form-icon position-relative">
             <i data-feather="search" class="fea icon-sm icons"></i>
-            <input wire:model.live="name" id="subject" class="form-control ps-5" placeholder="بحث بإسم فئة الفاتورة :"
+            <input wire:model.live="name" id="subject" class="form-control ps-5" placeholder="بحث بإسم المخزن :"
                 autocomplete="off">
         </div>
     </div>
@@ -12,7 +12,9 @@
                 <thead class="bg-light rounded-top">
                     <tr>
                         <th class="border-bottom py-3" style="min-width:20px ">#</th>
-                        <th>أسم الفئة</th>
+                        <th>أسم المخزن</th>
+                        <th>التليفون</th>
+                        <th>العنوان</th>
                         <th>حالة التفعيل</th>
                         <th>انشاء بواسطة</th>
                         <th>تحديث بواسطة</th>
@@ -27,6 +29,8 @@
                             <td>
                                 <a href="javascript:void(0)" class="text-dark">{{ $info->name }}</a>
                             </td>
+                            <td>{{ $info->phone }}</td>
+                            <td>{{ $info->address }}</td>
                             <td>
                                 @if ($info->active->value == 1)
                                     <span
@@ -47,7 +51,7 @@
                             </td>
                             <td>
                                 @include('dashboard.partials.actions', [
-                                    'name' => 'salesMatrialType',
+                                    'name' => 'stores',
                                     'name_id' => $info,
                                 ])
                             </td>
