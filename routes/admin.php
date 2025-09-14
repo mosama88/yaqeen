@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\TreasuryController;
 use App\Http\Controllers\Dashboard\SalesMatrialTypeController;
 use App\Http\Controllers\Dashboard\StoreController;
 use App\Http\Controllers\Dashboard\InvUnitController;
+use App\Http\Controllers\Dashboard\InvItemCategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,10 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
 
     //الوحدات
     Route::resource('invUnits', InvUnitController::class);
+
+    //فئات الأصناف
+    Route::resource('invItemCategory', InvItemCategoryController::class);
+
 
 
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');

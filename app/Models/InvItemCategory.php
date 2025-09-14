@@ -9,16 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Enums\UnitIsMaster;
 use App\Enums\StatusActiveEnum;
 
-class InvUnit extends Model
+class InvItemCategory extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $table = 'inv_units';
+    protected $table = 'inv_item_categories';
 
     protected $fillable = [
         'name',
         'slug',
-        'is_master',
         'active',
         'created_by',
         'updated_by',
@@ -51,7 +50,6 @@ class InvUnit extends Model
 
 
     protected $casts = [
-        'is_master' => UnitIsMaster::class,
         'active' => StatusActiveEnum::class,
     ];
 }

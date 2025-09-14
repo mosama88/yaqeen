@@ -1,5 +1,5 @@
 @php
-    use App\Enums\Treasury\TreasuryIsMaster;
+    use App\Enums\UnitIsMaster;
 @endphp
 @extends('dashboard.layouts.master')
 @section('title', 'الوحدات')
@@ -41,40 +41,14 @@
                                     class="form-select form-control @error('is_master') is-invalid @enderror"
                                     aria-label="Default select example">
                                     <option selected value="">-- أختر النوع--</option>
-                                    <option @if (old('is_master') == TreasuryIsMaster::Master) selected @endif
-                                        value="{{ TreasuryIsMaster::Master }}">
-                                        {{ TreasuryIsMaster::Master->label() }}</option>
-                                    <option @if (old('is_master') == TreasuryIsMaster::SubBranch) selected @endif
-                                        value="{{ TreasuryIsMaster::SubBranch }}">
-                                        {{ TreasuryIsMaster::SubBranch->label() }}</option>
+                                    <option @if (old('is_master') == UnitIsMaster::Master) selected @endif
+                                        value="{{ UnitIsMaster::Master }}">
+                                        {{ UnitIsMaster::Master->label() }}</option>
+                                    <option @if (old('is_master') == UnitIsMaster::Fragmentation) selected @endif
+                                        value="{{ UnitIsMaster::Fragmentation }}">
+                                        {{ UnitIsMaster::Fragmentation->label() }}</option>
                                 </select>
                                 @error('is_master')
-                                    <span class="invalid-feedback d-block text-danger">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">آخر رقم إيصال صرف نقدية لهذه الخزينه</label>
-                                <input name="last_payment_receipt" value="{{old('last_payment_receipt')}}" id="last_payment_receipt"
-                                    class="form-control @error('last_payment_receipt') is-invalid @enderror"
-                                    placeholder="إدخل رقم الايصال :"
-                                    oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
-                                @error('last_payment_receipt')
-                                    <span class="invalid-feedback d-block text-danger">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">آخر رقم إيصال تحصيل نقدية لهذه الخزينه</label>
-                                <input name="last_collection_receipt" value="{{old('last_collection_receipt')}}" id="last_collection_receipt"
-                                    class="form-control @error('last_collection_receipt') is-invalid @enderror"
-                                    placeholder="إدخل رقم الايصال :"
-                                    oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
-                                @error('last_collection_receipt')
                                     <span class="invalid-feedback d-block text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -29,7 +29,7 @@ class InvUnitRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:inv_units,name,' . $invUnitId,
             'is_master' => [
-                'nullable',
+                'required',
                 Rule::in(array_column(TreasuryIsMaster::cases(), 'value')),
             ],
             'active' => [

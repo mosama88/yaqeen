@@ -26,6 +26,7 @@
                         <li><a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a></li>
                         <li><a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a></li>
                         <li><a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدة</a></li>
+                        <li><a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a></li>
                     </ul>
                 </div>
             </li>
