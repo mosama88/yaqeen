@@ -17,19 +17,41 @@
                 <a href="{{ route('dashboard.index') }}"><i class="fa-solid fa-house me-2"></i>لوحة التحكم</a>
             </li>
 
-            <li class="sidebar-dropdown">
-                <a href="javascript:void(0)"><i class="fa-solid fa-sliders me-2"></i>الأعدادات العامة</a>
-                <div class="sidebar-submenu">
+
+            <li
+                class="sidebar-dropdown {{ request()->is('dashboard/admin-panel-settings*') ||
+                request()->is('dashboard/treasuries*') ||
+                request()->is('dashboard/salesMatrialType*') ||
+                request()->is('dashboard/stores*') ||
+                request()->is('dashboard/invUnits*') ||
+                request()->is('dashboard/invItemCategory*')
+                    ? 'active'
+                    : '' }}">
+                <a href="javascript:void(0)">
+                    <i class="fa-solid fa-sliders me-2"></i>الأعدادات العامة
+                </a>
+                <div
+                    class="sidebar-submenu {{ request()->is('dashboard/admin-panel-settings*') ||
+                    request()->is('dashboard/treasuries*') ||
+                    request()->is('dashboard/salesMatrialType*') ||
+                    request()->is('dashboard/stores*') ||
+                    request()->is('dashboard/invUnits*') ||
+                    request()->is('dashboard/invItemCategory*')
+                        ? 'active d-block'
+                        : '' }}">
                     <ul>
                         <li><a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a></li>
                         <li><a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a></li>
                         <li><a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a></li>
-                        <li><a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a></li>
+                        <li class="@yield('active-stores')">
+                            <a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a>
+                        </li>
                         <li><a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدة</a></li>
                         <li><a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a></li>
                     </ul>
                 </div>
             </li>
+
 
         </ul>
         <!-- sidebar-menu  -->

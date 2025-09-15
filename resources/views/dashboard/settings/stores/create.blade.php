@@ -1,5 +1,5 @@
-
 @extends('dashboard.layouts.master')
+@section('active-stores', 'active')
 @section('title', 'المخازن')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
