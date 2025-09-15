@@ -41,7 +41,7 @@
                         : '' }}">
                     <ul>
                         <li class="@yield('active-admin-panel-settings')">
-                            <a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a>
+                            <a href="{{ route('dashboard.admin-panel-settings.index') }}">الضبط العام</a>
                         </li>
                         <li class="@yield('active-treasuries')">
                             <a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a>
@@ -53,7 +53,7 @@
                             <a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a>
                         </li>
                         <li class="@yield('active-invUnits')">
-                            <a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدة</a>
+                            <a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدات</a>
                         </li>
                         <li class="@yield('active-invItemCategory')">
                             <a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a>
