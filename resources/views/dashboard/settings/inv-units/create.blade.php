@@ -2,6 +2,7 @@
     use App\Enums\UnitIsMaster;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-invUnits', 'active')
 @section('title', 'الوحدات')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
@@ -27,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">أسم الوحداته<span class="text-danger mx-1">*</span></label>
-                                <input name="name" value="{{old('name')}}" id="name" type="text"
+                                <input name="name" value="{{ old('name') }}" id="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" placeholder="أسم الوحداته :">
                                 @error('name')
                                     <span class="invalid-feedback d-block text-danger">

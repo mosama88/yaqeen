@@ -2,6 +2,7 @@
     use App\Enums\StatusActiveEnum;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-invItemCategory', 'active')
 @section('title', 'تعديل فئة الصنف')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
@@ -22,7 +23,8 @@
                     <h5 class="title mb-0"> تعديل فئة الصنف </h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('dashboard.invItemCategory.update', $invItemCategory->slug) }}" method="POST" id="updateForm">
+                    <form action="{{ route('dashboard.invItemCategory.update', $invItemCategory->slug) }}" method="POST"
+                        id="updateForm">
                         @csrf
                         @method('PUT')
                         <div class="row">

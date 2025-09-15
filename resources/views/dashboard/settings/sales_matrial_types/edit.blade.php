@@ -1,8 +1,9 @@
 @php
-use App\Enums\StatusActiveEnum;
+    use App\Enums\StatusActiveEnum;
 @endphp
 @extends('dashboard.layouts.master')
 @section('title', 'تعديل فئة الفاتورة')
+@section('active-treasuries', 'active')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
         'titlePage' => 'تعديل فئة الفاتورة',
@@ -22,7 +23,8 @@ use App\Enums\StatusActiveEnum;
                     <h5 class="title mb-0"> تعديل فئة الفاتورةة </h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('dashboard.salesMatrialType.update', $salesMatrialType->slug) }}" method="POST" id="updateForm">
+                    <form action="{{ route('dashboard.salesMatrialType.update', $salesMatrialType->slug) }}" method="POST"
+                        id="updateForm">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -30,7 +32,8 @@ use App\Enums\StatusActiveEnum;
                                 <label class="form-label">أسم فئة الفاتورةه<span class="text-danger mx-1">*</span></label>
                                 <input name="name" id="name" type="text"
                                     value="{{ old('name', $salesMatrialType->name) }}"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="أسم فئة الفاتورة :">
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="أسم فئة الفاتورة :">
                                 @error('name')
                                     <span class="invalid-feedback d-block text-danger">
                                         <strong>{{ $message }}</strong>

@@ -2,6 +2,7 @@
     use App\Enums\StatusActiveEnum;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-invItemCategory', 'active')
 @section('title', 'عرض فئة الصنف')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [

@@ -2,6 +2,7 @@
     use App\Enums\StatusActiveEnum;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-admin-panel-settings', 'active')
 @section('title', 'تعديل إعدادت الشركة')
 @section('content')
 

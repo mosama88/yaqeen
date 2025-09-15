@@ -40,14 +40,24 @@
                         ? 'active d-block'
                         : '' }}">
                     <ul>
-                        <li><a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a></li>
-                        <li><a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a></li>
-                        <li><a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a></li>
+                        <li class="@yield('active-admin-panel-settings')">
+                            <a href="{{ route('dashboard.admin-panel-settings.index') }}">إعدادات الشركة</a>
+                        </li>
+                        <li class="@yield('active-treasuries')">
+                            <a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a>
+                        </li>
+                        <li class="@yield('active-salesMatrialType')">
+                            <a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a>
+                        </li>
                         <li class="@yield('active-stores')">
                             <a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a>
                         </li>
-                        <li><a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدة</a></li>
-                        <li><a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a></li>
+                        <li class="@yield('active-invUnits')">
+                            <a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدة</a>
+                        </li>
+                        <li class="@yield('active-invItemCategory')">
+                            <a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a>
+                        </li>
                     </ul>
                 </div>
             </li>

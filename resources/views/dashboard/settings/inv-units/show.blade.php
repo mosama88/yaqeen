@@ -3,6 +3,7 @@
     use App\Enums\StatusActiveEnum;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-invUnits', 'active')
 @section('title', 'عرض الوحدات')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [

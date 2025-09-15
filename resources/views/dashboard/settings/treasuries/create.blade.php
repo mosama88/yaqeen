@@ -2,6 +2,7 @@
     use App\Enums\Treasury\TreasuryIsMaster;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-treasuries', 'active')
 @section('title', 'الخزن')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
@@ -27,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">أسم الخزنه<span class="text-danger mx-1">*</span></label>
-                                <input name="name" value="{{old('name')}}" id="name" type="text"
+                                <input name="name" value="{{ old('name') }}" id="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" placeholder="أسم الخزنه :">
                                 @error('name')
                                     <span class="invalid-feedback d-block text-danger">
@@ -57,7 +58,8 @@
                             <!--end col-->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">آخر رقم إيصال صرف نقدية لهذه الخزينه</label>
-                                <input name="last_payment_receipt" value="{{old('last_payment_receipt')}}" id="last_payment_receipt"
+                                <input name="last_payment_receipt" value="{{ old('last_payment_receipt') }}"
+                                    id="last_payment_receipt"
                                     class="form-control @error('last_payment_receipt') is-invalid @enderror"
                                     placeholder="إدخل رقم الايصال :"
                                     oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
@@ -70,7 +72,8 @@
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">آخر رقم إيصال تحصيل نقدية لهذه الخزينه</label>
-                                <input name="last_collection_receipt" value="{{old('last_collection_receipt')}}" id="last_collection_receipt"
+                                <input name="last_collection_receipt" value="{{ old('last_collection_receipt') }}"
+                                    id="last_collection_receipt"
                                     class="form-control @error('last_collection_receipt') is-invalid @enderror"
                                     placeholder="إدخل رقم الايصال :"
                                     oninput="this.value=this.value.replace(/[^0-9.]/g,'');">

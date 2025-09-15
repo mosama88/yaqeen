@@ -1,5 +1,5 @@
-
 @extends('dashboard.layouts.master')
+@section('active-invItemCategory', 'active')
 @section('title', 'فئات الأصناف')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">أسم الصنف<span class="text-danger mx-1">*</span></label>
-                                <input name="name" value="{{old('name')}}" id="name" type="text"
+                                <input name="name" value="{{ old('name') }}" id="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" placeholder="أسم الصنف :">
                                 @error('name')
                                     <span class="invalid-feedback d-block text-danger">

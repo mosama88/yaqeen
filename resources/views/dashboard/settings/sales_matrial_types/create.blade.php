@@ -2,6 +2,7 @@
     use App\Enums\Treasury\TreasuryIsMaster;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-treasuries', 'active')
 @section('title', 'فئات الفواتير')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [

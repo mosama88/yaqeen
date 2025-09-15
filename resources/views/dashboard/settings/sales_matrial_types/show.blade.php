@@ -2,6 +2,7 @@
     use App\Enums\StatusActiveEnum;
 @endphp
 @extends('dashboard.layouts.master')
+@section('active-treasuries', 'active')
 @section('title', 'عرض فئة الفاتورة')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
