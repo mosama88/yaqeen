@@ -13,8 +13,6 @@ class TreasuryDeliverySeeder extends Seeder
      */
     public function run(): void
     {
-
-
         TreasuryDelivery::factory(50)->create();
     }
 }
