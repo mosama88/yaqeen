@@ -28,43 +28,45 @@
                     ? 'active'
                     : '' }}">
                 <a href="javascript:void(0)">
-                    <i class="fa-solid fa-sliders me-2"></i>الأعدادات العامة
+                    <i class="ti ti-settings me-2"></i>الأعدادات العامة
                 </a>
                 <div
-                    class="sidebar-submenu {{ request()->is('dashboard/admin-panel-settings*') ||
-                    request()->is('dashboard/treasuries*') ||
-                    request()->is('dashboard/salesMatrialType*') ||
-                    request()->is('dashboard/stores*') ||
-                    request()->is('dashboard/invUnits*') ||
-                    request()->is('dashboard/invItemCategory*')
-                        ? 'active d-block'
-                        : '' }}">
-                    <ul>
-                        <li class="@yield('active-admin-panel-settings')">
-                            <a href="{{ route('dashboard.admin-panel-settings.index') }}">الضبط العام</a>
-                        </li>
-                        <li class="@yield('active-treasuries')">
-                            <a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a>
-                        </li>
-                        <li class="@yield('active-salesMatrialType')">
-                            <a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a>
-                        </li>
-                        <li class="@yield('active-stores')">
-                            <a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a>
-                        </li>
-                        <li class="@yield('active-invUnits')">
-                            <a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدات</a>
-                        </li>
-                        <li class="@yield('active-invItemCategory')">
-                            <a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                    class="sidebar-submenu
+                        {{ request()->is('dashboard/admin-panel-settings*') ||
+                        request()->is('dashboard/treasuries*') ||
+                        request()->is('dashboard/salesMatrialType*') ||
+                        request()->is('dashboard/stores*') ||
+                        request()->is('dashboard/invUnits*') ||
+                        request()->is('dashboard/invItemCategory*')
+                            ? 'active d-block'
+                            : '' }}">
+                        <ul>
+                            <li class="@yield('active-admin-panel-settings')">
+                                <a href="{{ route('dashboard.admin-panel-settings.index') }}">الضبط العام</a>
+                            </li>
+                            <li class="@yield('active-treasuries')">
+                                <a href="{{ route('dashboard.treasuries.index') }}">بيانات الخزن</a>
+                            </li>
+                            <li class="@yield('active-salesMatrialType')">
+                                <a href="{{ route('dashboard.salesMatrialType.index') }}">بيانات فئات الفواتير</a>
+                            </li>
+                            <li class="@yield('active-stores')">
+                                <a href="{{ route('dashboard.stores.index') }}">بيانات المخازن</a>
+                            </li>
+                            <li class="@yield('active-invUnits')">
+                                <a href="{{ route('dashboard.invUnits.index') }}">بيانات الوحدات</a>
+                            </li>
+                            <li class="@yield('active-invItemCategory')">
+                                <a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a>
+                            </li>
+                        </ul>
+    </div>
+    </li>
 
 
-        </ul>
-        <!-- sidebar-menu  -->
+
+    </ul>
+    <!-- sidebar-menu  -->
     </div>
     <!-- Sidebar Footer -->
     <ul class="sidebar-footer list-unstyled mb-0">

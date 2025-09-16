@@ -28,6 +28,8 @@
     <!-- Style Css-->
     <link href="{{ asset('dashboard') }}/assets/css/style.min.css" class="theme-opt" rel="stylesheet" type="text/css" />
 
+    <!-- FontAwsome Css -->
+    <link href="{{ asset('dashboard') }}/assets/css/all.min.css" class="theme-opt" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -49,7 +51,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card form-signin p-4 rounded shadow">
-                        <form method="POST" action="{{ route('dashboard.login') }}">
+                        <form method="POST" action="{{ route('dashboard.login') }}" id="loginForm">
                             @csrf
                             <a href="index.html"><img src="{{ asset('dashboard') }}/assets/images/logo-icon.png"
                                     class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
@@ -80,7 +82,7 @@
 
 
 
-                            <button class="btn btn-primary w-100" type="submit">تسجيل الدخول</button>
+                            <button class="btn btn-primary w-100" id="loginButton" type="submit">تسجيل الدخول</button>
 
                             <p class="mb-0 text-muted mt-3 text-center">©
                                 <script>
@@ -103,6 +105,25 @@
     <!-- Main Js -->
     <script src="{{ asset('dashboard') }}/assets/js/plugins.init.js"></script>
     <script src="{{ asset('dashboard') }}/assets/js/app.js"></script>
+
+    <script>
+        // حل بديل أكثر موثوقية
+        function disableButton() {
+            const loginButton = document.getElementById('loginButton');
+            loginButton.disabled = true;
+            loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تسجيل الدخول';
+
+            // إرسال النموذج تلقائيًا بعد تعطيل الزر
+            document.getElementById('loginForm').submit();
+        }
+
+        // أو يمكنك استخدام هذا الحدث
+        document.getElementById('loginForm').addEventListener('submit', function() {
+            const loginButton = document.getElementById('loginButton');
+            loginButton.disabled = true;
+            loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تسجيل الدخول';
+        });
+    </script>
 
 </body>
 

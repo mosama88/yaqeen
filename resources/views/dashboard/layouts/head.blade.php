@@ -12,6 +12,9 @@
     <!-- Bootstrap Css -->
     <link href="{{ asset('dashboard') }}/assets/css/bootstrap-rtl.min.css" class="theme-opt" rel="stylesheet"
         type="text/css" />
+
+    <!-- Arabic Font  font-family: DroidKufi-Regular; -->
+    <link href="{{ asset('dashboard') }}/assets/font-ar/Fonts/stylesheet.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('dashboard') }}/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet"
         type="text/css">
@@ -21,6 +24,13 @@
     <!-- Style Css-->
     <link href="{{ asset('dashboard') }}/assets/css/style-rtl.min.css" class="theme-opt" rel="stylesheet"
         type="text/css" />
+
+    <!-- Style Css-->
+    <link href="{{ asset('dashboard') }}/assets/css/style-font.css" rel="stylesheet"
+        type="text/css" />
+
+
+
 
 
     @stack('css')
