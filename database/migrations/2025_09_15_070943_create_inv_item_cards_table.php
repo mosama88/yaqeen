@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\InvItemCategory;
+use App\Models\InvUnit;
 
 return new class extends Migration
 {
@@ -23,8 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_inv_item_card_id')->nullable(); //كود صنف الاب له
             $table->tinyInteger('does_has_retail_unit')->default(1); //هل للصنف وحدة تجزئة
             $table->tinyInteger('retail_uom')->default(1); //هل للصنف وحدة تجزئة
-            $table->tinyInteger('uom_id')->default(1); //كود وحدة القياس
-            $table->decimal('retail_uom_qty_parent', 10, 2)->default(1); //كود وحدة القياس
+            $table->foreignIdFor(InvUnit::class)->nullable()->constrained()->nullOnDelete(); //كود الوحدات الاب
+            $table->decimal('retail_uom_qty_parent', 10, 2)->default(1);
             $table->tinyInteger('active')->default(1); //كود وحدة التجزئة
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();

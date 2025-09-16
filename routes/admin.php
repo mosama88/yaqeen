@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\SalesMatrialTypeController;
 use App\Http\Controllers\Dashboard\StoreController;
 use App\Http\Controllers\Dashboard\InvUnitController;
 use App\Http\Controllers\Dashboard\InvItemCategoryController;
+use App\Http\Controllers\Dashboard\InvItemCardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,6 +38,9 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
 
     //فئات الأصناف
     Route::resource('invItemCategory', InvItemCategoryController::class);
+
+    //فئات الأصناف
+    Route::resource('invItemCards', InvItemCardController::class);
 
 
 
