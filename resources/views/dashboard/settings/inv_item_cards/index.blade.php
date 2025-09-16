@@ -2,13 +2,13 @@
     use App\Livewire\Dashboard\InvItemCardTable;
 @endphp
 @extends('dashboard.layouts.master')
-@section('title', 'فئات الاصناف')
+@section('title', 'بيانات الاصناف')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
-        'titlePage' => 'فئات الاصناف',
+        'titlePage' => 'بيانات الاصناف',
         'PreviousPage' => 'لوحة التحكم',
         'UrlPreviousPage' => 'index',
-        'currentPage' => 'فئات الاصناف',
+        'currentPage' => 'بيانات الاصناف',
     ])
 
     @include('dashboard.layouts.message')

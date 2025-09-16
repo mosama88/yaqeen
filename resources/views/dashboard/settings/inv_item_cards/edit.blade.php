@@ -3,13 +3,13 @@
 @endphp
 @extends('dashboard.layouts.master')
 @section('active-invItemCards', 'active')
-@section('title', 'تعديل فئة الصنف')
+@section('title', 'تعديل بيانات الصنف')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
-        'titlePage' => 'تعديل فئة الصنف',
-        'PreviousPage' => 'جدول فئة الصنف',
+        'titlePage' => 'تعديل بيانات الصنف',
+        'PreviousPage' => 'جدول بيانات الصنف',
         'UrlPreviousPage' => 'invItemCards.index',
-        'currentPage' => 'تعديل فئة الصنف',
+        'currentPage' => 'تعديل بيانات الصنف',
     ])
 
     @include('dashboard.layouts.message')
@@ -20,7 +20,7 @@
         <div class="col-lg-12 mt-4">
             <div class="card rounded shadow">
                 <div class="p-4 border-bottom">
-                    <h5 class="title mb-0"> تعديل فئة الصنف </h5>
+                    <h5 class="title mb-0"> تعديل بيانات الصنف </h5>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('dashboard.invItemCards.update', $invItemCard->slug) }}" method="POST"
@@ -29,10 +29,10 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">أسم فئة الصنف<span class="text-danger mx-1">*</span></label>
+                                <label class="form-label">أسم بيانات الصنف<span class="text-danger mx-1">*</span></label>
                                 <input name="name" id="name" type="text"
                                     value="{{ old('name', $invItemCard->name) }}"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="أسم فئة الصنف :">
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="أسم بيانات الصنف :">
                                 @error('name')
                                     <span class="invalid-feedback d-block text-danger">
                                         <strong>{{ $message }}</strong>

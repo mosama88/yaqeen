@@ -59,6 +59,9 @@
                             <li class="@yield('active-invItemCategory')">
                                 <a href="{{ route('dashboard.invItemCategory.index') }}">فئات الأصناف</a>
                             </li>
+                            <li class="@yield('active-invItemCards')">
+                                <a href="{{ route('dashboard.invItemCards.index') }}">بيانات الأصناف</a>
+                            </li>
                         </ul>
     </div>
     </li>

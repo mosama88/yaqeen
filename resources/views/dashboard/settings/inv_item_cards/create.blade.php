@@ -1,12 +1,12 @@
 @extends('dashboard.layouts.master')
 @section('active-invItemCards', 'active')
-@section('title', 'فئات الأصناف')
+@section('title', 'بيانات الأصناف')
 @section('content')
     @include('dashboard.layouts.breadcrumb', [
-        'titlePage' => 'فئات الأصناف',
-        'PreviousPage' => 'جدول فئات الأصناف',
+        'titlePage' => 'بيانات الأصناف',
+        'PreviousPage' => 'جدول بيانات الأصناف',
         'UrlPreviousPage' => 'invItemCards.index',
-        'currentPage' => 'فئات الأصناف',
+        'currentPage' => 'بيانات الأصناف',
     ])
 
     @include('dashboard.layouts.message')
